@@ -68,9 +68,6 @@ const gameGroup = [
 // FUNCTIONS
   function getAge(birthdate) {
   const birthday = new Date(birthdate).getTime();
-  console.log(birthdate);
-  console.log(birthday);
-
   const now = Date.now();
   const age = Math.floor((now - birthday) / 31536000000);
   
