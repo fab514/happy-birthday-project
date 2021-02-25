@@ -9,38 +9,71 @@ const gameGroup = [
       first: "Anna",
       last: "Brekke",
     },
-  },
+    init: function() {
+      this.age = getAge(this.birthday);
+      delete this.init;
+      return this;
+    }
+  }.init(),
   {
     birthday: "February 27, 1990",
     name: {
       first: "Andrew",
       last: "Brenner",
     },
-  },
+    init: function() {
+      this.age = getAge(this.birthday);
+      delete this.init;
+      return this;
+    }
+  }.init(),
   {
     birthday: "July 22, 1989",
     name: {
       first: "Felicia",
       last: "Brenner",
     },
-  },
+    init: function() {
+      this.age = getAge(this.birthday);
+      delete this.init;
+      return this;
+    }
+  }.init(),
   {
     birthday: "December 8, 1987",
     name: {
       first: "Dan",
       last: "Richmond",
     },
-  },
+    init: function() {
+      this.age = getAge(this.birthday);
+      delete this.init;
+      return this;
+    }
+  }.init(),
   {
     birthday: "January 30, 1989",
     name: {
       first: "Justin",
       last: "Veres",
     },
-  },
+    init: function() {
+      this.age = getAge(this.birthday);
+      delete this.init;
+      return this;
+    }
+  }.init()
 ];
 
 // FUNCTIONS
+  function getAge(birthdate) {
+  const birthday = new Date(birthdate).getTime();
+  const now = Date.now();
+  const age = Math.floor((now - birthday) / 31536000000);
+  
+  return age;
+};
+
 function createHalfBirthdayTable(groupMembers) {
   return groupMembers.map((member) => {
     // Create a new object so we aren't mutating key-value pairs in the original object.
