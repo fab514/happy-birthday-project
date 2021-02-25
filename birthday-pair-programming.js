@@ -63,13 +63,7 @@ function createHalfBirthdayTable(groupMembers) {
     // Set the halfBirthday value to the halfBirthday
     halfBirthdayObject.halfBirthday = halfBirthday
       // as a date string
-      .toDateString()
-      // then split the string into an array at the spaces
-      .split(" ")
-      // then slice the year off of the array
-      .slice(0, -1)
-      // then join the array back into a string
-      .join(" ");
+      .toLocaleDateString("en-US", { month: "long", day: "numeric" });
     // Return the newly created object
     return halfBirthdayObject;
   });
