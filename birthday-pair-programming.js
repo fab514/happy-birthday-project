@@ -73,6 +73,17 @@ const gameGroup = [
   
   return age;
 };
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+// Look up sorting algorithms 
+function sortByAge(a, b) {
+  if(a.age < b.age) {
+    return -1
+  }
+  if(a.age > b.age) {
+    return 1
+  }
+  return 0
+}
 
 function createHalfBirthdayTable(groupMembers) {
   return groupMembers.map((member) => {
@@ -84,6 +95,8 @@ function createHalfBirthdayTable(groupMembers) {
     halfBirthdayObject.firstName = member.name.first;
     // set the last name to be the last name from the original object.
     halfBirthdayObject.lastName = member.name.last;
+    // set the age to be the age from the original object. 
+    halfBirthdayObject.age = member.age;
     // Create a new Date object from the birthday so we have access to methods on the Date constructor.
     const halfBirthday = new Date(member.birthday);
     // getMonth starts with 0 for January, up to 11 for December, so we are checking this against 11 instead of 12.
@@ -99,14 +112,15 @@ function createHalfBirthdayTable(groupMembers) {
       .toLocaleDateString("en-US", { month: "long", day: "numeric" });
     // Return the newly created object
     return halfBirthdayObject;
-  });
+    // chain .sort to .map and create a custom sorting algorithm to sort by age. 
+  }).sort(sortByAge);
 }
 
 // EXECUTION OF THE JAVASCRIPT
 // Initial table of the game group for debugging purposes.
 // I'm using the string so it's easy to track this among the other values we might be console.logging along the way.
 // Log out a table of people with their birthday
-console.table(gameGroup);
+console.table(gameGroup.sort(sortByAge));
 // Take that array of people
 // For each person, we want to calculate their half-birthday
 // Log out a new table of people with their half-birthday
